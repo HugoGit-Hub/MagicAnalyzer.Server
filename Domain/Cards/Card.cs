@@ -7,15 +7,18 @@ public class Card : Entity<int>
 {
     public Guid CardGuid { get; }
     
+    public int DeckId { get; }
+    
     public Deck Deck { get; } = null!;
 
-    private Card(int id, Guid cardGuid) : base(id)
+    private Card(int id, int deckId, Guid cardGuid) : base(id)
     {
         CardGuid = cardGuid;
+        DeckId = deckId;
     }
     
-    public static Card Create(int id, Guid cardGuid)
+    public static Card Create(int id, int deckId, Guid cardGuid)
     {
-        return new Card(id, cardGuid);
+        return new Card(id, deckId, cardGuid);
     }
 }

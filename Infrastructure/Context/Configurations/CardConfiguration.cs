@@ -11,6 +11,8 @@ public class CardConfiguration : IEntityTypeConfiguration<Card>
     {
         builder.HasKey(d => d.Id);
         builder.Property(d => d.CardGuid).IsRequired();
-        builder.HasOne<Deck>().WithMany(x => x.Cards);
+        builder.HasOne<Deck>(x => x.Deck)
+            .WithMany(x => x.Cards)
+            .HasForeignKey(x => x.DeckId);
     }
 }
